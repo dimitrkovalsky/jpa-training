@@ -1,42 +1,19 @@
 package models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-/**
- * @author Antonio Goncalves
- *         APress models.Book - Beginning Java EE 7 with Glassfish 4
- *         http://www.apress.com/
- *         http://www.antoniogoncalves.org
- *         --
- */
-@Entity
-@NamedQueries({
-        @NamedQuery(name = "findAllBooks", query = "SELECT b FROM Book b"),
-        @NamedQuery(name = "findBookH2G2", query = "SELECT b FROM Book b WHERE b.title ='H2G2'")
-})
+@Entity(name = "Book")
 public class Book {
-
-  // ======================================
-  // =             Attributes             =
-  // ======================================
-
   @Id
   @GeneratedValue
   private Long id;
-  @NotNull
   private String title;
   private Float price;
-  @Size(min = 10, max = 2000)
   private String description;
   private String isbn;
   private Integer nbOfPage;
   private Boolean illustrations;
 
-  // ======================================
-  // =            Constructors            =
-  // ======================================
 
   public Book() {
   }
@@ -50,13 +27,17 @@ public class Book {
     this.illustrations = illustrations;
   }
 
-  // ======================================
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+// ======================================
   // =          Getters & Setters         =
   // ======================================
 
-  public Long getId() {
-    return id;
-  }
 
   public String getTitle() {
     return title;
